@@ -125,14 +125,14 @@ const thame = {
   animate={{ opacity: 1, y: 0, scale: 1 }}
   transition={{ duration: 0.6, ease: "easeOut" }}
   
-  className={`${!isLogin ? "h-5/6" : "h-auto"} 
-    w-full mx-2 xs:h-auto sm:w-[550px] xs:p-4 md:p-6 flex justify-center 
+  className={`h-auto
+    w-full mx-3 xs:h-auto sm:w-[550px] xs:p-4 md:p-6 flex justify-center 
    bg-white/20 backdrop-blur-lg border  rounded-xl 
    shadow-lg shadow-white/20`}>
    
    <form
       onSubmit={handleSubmit} 
-      className=" w-full p-2 xl:rounded-xl text-center text-white"
+      className=" w-full p-3 xl:rounded-xl text-center text-white"
     >
       
       {isLogin ? (
@@ -223,7 +223,7 @@ const thame = {
       </span>
       
     </div>
-    <h3 className="text-center tetx-md sm:text-2xl font-abhaya">Sing in</h3>
+    <h3 className="text-center text-2xl sm:text-3xl font-abhaya">Sing in</h3>
   </div>
 )}
 
