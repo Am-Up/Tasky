@@ -118,19 +118,20 @@ const thame = {
 
 
   return (
-   <div className="bg-[url('https://img.freepik.com/premium-vector/padlock-with-keyhole-icon-personal-data-security-illustrates-cyber-data-information-privacy-idea-blue-color-abstract-hi-speed-internet-technology_542466-600.jpg')] bg-no-repeat bg-cover bg-center h-screen w-screen flex justify-center items-center pt-4 ">
+   <div className=" bg-[url('https://img.freepik.com/premium-vector/padlock-with-keyhole-icon-personal-data-security-illustrates-cyber-data-information-privacy-idea-blue-color-abstract-hi-speed-internet-technology_542466-600.jpg')] bg-no-repeat bg-cover bg-center h-screen w-screen flex justify-center items-center pt-4 ">
     
  <motion.div
   initial={{ opacity: 0, y: 50, scale: 0.95 }}
   animate={{ opacity: 1, y: 0, scale: 1 }}
   transition={{ duration: 0.6, ease: "easeOut" }}
-  className={` w-full  ${
-    !isLogin ? "h-5/6" : "h-auto"
-  } xs:h-auto sm:w-[550px] p-1.5 xs:p-4 md:p-6 flex justify-center 
-  bg-white/20 backdrop-blur-lg border border-white/30 rounded-xl 
-  shadow-lg shadow-white/20 absolute `}>
-    <form
-      onSubmit={handleSubmit}
+  
+  className={`${!isLogin ? "h-5/6" : "h-auto"} 
+    w-full mx-2 xs:h-auto sm:w-[550px] xs:p-4 md:p-6 flex justify-center 
+   bg-white/20 backdrop-blur-lg border  rounded-xl 
+   shadow-lg shadow-white/20`}>
+   
+   <form
+      onSubmit={handleSubmit} 
       className=" w-full p-2 xl:rounded-xl text-center text-white"
     >
       
@@ -277,19 +278,20 @@ const thame = {
        
     </form>
   </motion.div>
+  
 <span
   onClick={()=>navigate(-1)}
   className="
     text-white 
     absolute 
-    top-20 sm:top-10 md:top-8 lg:top-10 
-    right-4 sm:right-8 md:right-10 lg:right-14 
+    top-28 sm:top-10 md:top-8 lg:top-10 
+    right-7 sm:right-8 md:right-10 lg:right-14 
     cursor-pointer 
     transition-transform 
     hover:translate-x-5 
   "
 >
-  <ArrowForwardIcon sx={{ fontSize: { xs: 28, sm: 32, md: 36, lg: 40 } }} />
+  <ArrowForwardIcon sx={{ fontSize: { xs: 35, sm: 36, md: 40, lg: 50 } }} />
 </span>
   
 </div>
