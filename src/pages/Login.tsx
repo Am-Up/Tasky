@@ -19,7 +19,7 @@ interface FormState {
     Email: string,
     Password: string | number,
     Profile_Image?: File | null,
-   
+    gender?:string 
 }
 
   const Login: React.FC =()=> {
@@ -32,7 +32,7 @@ interface FormState {
     Email: "",
     Password: "",
     Profile_Image: null,
-    
+    gender:"malt" || "female" || ""
   });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isLogin, setIsLogin] = useState(false);
@@ -55,7 +55,7 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
       setFormData({ ...formData, [name]: value });
     }
   };
-
+  console.log(formData)
   const handleClickShowPassword = () => setShowPassword((s) => !s);
 
   
@@ -251,31 +251,77 @@ const thame = {
               ),
             }}
           />
+
+
+    <fieldset className="rounded-md max-w-sm mt-2">
+   
+      <div className="flex gap-3 items-center">
+        <label className="flex items-center gap-1 cursor-pointer">
+          <input
+            type="radio"
+            name="gender"
+            value="male"
+            checked={formData.gender === "male"}
+            onChange={() => setFormData({ ...formData, gender: "male" })}
+            aria-checked={formData.gender === "male"}
+            className="accent-primary"
+          />
+          <span className="text-sm font-abhaya md:text-lg">Male</span>
+        </label>
+
+        <label className="flex items-center gap-1 cursor-pointer">
+          <input
+            type="radio"
+            name="gender"
+            value="female"
+            checked={formData.gender === "female"}
+           onChange={() => setFormData({ ...formData, gender: "female" })}
+            aria-checked={formData.gender === "female"}
+            className="accent-primary"
+          />
+          <span className="text-sm font-abhaya md:text-lg">Female</span>
+        </label>
+
+        <label className="flex items-center gap-1 cursor-pointer">
+          <input
+            type="radio"
+            name="gender"
+            value=""
+            checked={formData.gender === ""}
+           onChange={() => setFormData({ ...formData, gender: "" })}
+            aria-checked={formData.gender === ""}
+            className="accent-primary"
+          />
+            <span className="text-sm font-abhaya md:text-lg">Prefer not to say</span>
+         </label>
+      </div>
+    </fieldset>
         </div>
       )}
 
-    <p className={`${!isLogin ? "pt-16 py-3" : "pt-16 py-3"}`}>
-  <span
-    className="cursor-pointer flex justify-center items-center gap-1 text-blue-400 hover:text-blue-500 transition"
-  >
-    {isLogin ? (
-      <p className="flex items-center gap-1 ">
-        <span className="text-text-dark text-lg font-abhaya">Don’t have an account?</span>
-        <a onClick={() => setIsLogin(!isLogin)} className="font-semibold text-lg font-abhaya">Sign in</a>
-      </p>
-    ) : (
-      <p className="flex items-center gap-1">
-        <span className="text-text-dark text-lg font-abhaya">Already have an account?</span>
-        <a   onClick={() => setIsLogin(!isLogin)} className="font-semibold text-lg font-abhaya">Login</a>
-      </p>
-    )}
-  </span>
-</p>
 
-      <button type="submit" className={` bg-blue-600 w-full text-white py-2 px-10 rounded-xl ${!isLogin ? "mt-2":"my-5"}`}>
+      <button type="submit" className={` bg-blue-600 w-full text-white py-2 my-2 mt-11 px-10 rounded-xl ${!isLogin ? "mt-2":"my-5"}`}>
         Submit
       </button>
-       
+
+
+      <div>
+  <span className="cursor-pointer flex justify-center items-center gap-1 text-blue-400 hover:text-blue-500 transition">
+    {isLogin ? (
+      <div className="flex items-center gap-1">
+        <span className="text-text-dark text-sm xl:text-lg font-abhaya">Don’t have an account?</span>
+        <a onClick={() => setIsLogin(!isLogin)} className="font-semibold text-lg font-abhaya">Sign in</a>
+      </div>
+    ) : (
+      <div className="flex items-center gap-1">
+        <span className="text-text-dark text-sm xl:text-lg font-abhaya">Already have an account?</span>
+        <a onClick={() => setIsLogin(!isLogin)} className="font-semibold text-lg font-abhaya">Login</a>
+      </div>
+    )}
+  </span>
+</div>
+
+
     </form>
   </motion.div>
   

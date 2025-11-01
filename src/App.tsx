@@ -14,23 +14,26 @@ import Login from './pages/Login.js';
 import LandingPage from './pages/LandingPage.jsx';
 import LoadingPage from './pages/LoadingPage.js';
 import { useEffect, useContext } from 'react';
+import AuthProvider, { AuthContext } from './contexts/AuthContext.js';
 
 function App() {
   return (
     <TodoProvider>
       <TaskProvider>
         <ToolsProvider>
-          <MainApp />
+          <AuthProvider>
+            <MainApp />
+          </AuthProvider>
         </ToolsProvider>
       </TaskProvider>
     </TodoProvider>
   );
 }
 
-// ✅ هذا الجزء يحتوي على منطق التحميل بعد أن يكون TaskProvider فعّال
 function MainApp() {
-  
-const { loading, setLoading } = useContext(TaskContext);
+  const { loading, setLoading } = useContext(TaskContext);
+  const { user } = useContext(AuthContext);
+
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(timer);
@@ -39,6 +42,8 @@ const { loading, setLoading } = useContext(TaskContext);
   if (loading) {
     return <LoadingPage />;
   }
+
+
 
   return (
     <>
@@ -49,7 +54,7 @@ const { loading, setLoading } = useContext(TaskContext);
           path="/Dashbord/*"
           element={
             <div className="w-full overflow-x-hidden h-full bg-neutral-100">
-              <Navegeshn />
+              <Navegeshn  />
               <div className="grid xl:grid-cols-[13%_87%] grid-cols-1 h-[calc(100vh)]">
                 <main className="order-1 xl:order-2 mt-12 dark:bg-background-dark w-full">
                   <Routes>

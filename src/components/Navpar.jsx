@@ -3,12 +3,11 @@ import ClearIcon from '@mui/icons-material/Clear';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import DonutSmallRoundedIcon from '@mui/icons-material/DonutSmallRounded';
 import AssignmentSharpIcon from '@mui/icons-material/AssignmentSharp';
-import HistorySharpIcon from '@mui/icons-material/HistorySharp';
+import User from './User';
 import BuildIcon from '@mui/icons-material/Build';
 import SettingsIcon from '@mui/icons-material/Settings';
-import PersonSharpIcon from '@mui/icons-material/PersonSharp';
+
 import { TaskContext } from '../contexts/TaskContext';
-import Useradmin from './Useradmin'
 import {NavLink} from 'react-router-dom'
 import Bott_dark from './Ui/Bott_dark';
 
@@ -82,7 +81,7 @@ export default function Navpar() {
 
             <Bott_dark/>
 
-            <Useradmin users="xl:hidden flex items-center ml-8 mt-28" />
+            <User style="xl:hidden flex items-center ml-8 mt-28" />
           </div>
         </div>
       ) : null}
