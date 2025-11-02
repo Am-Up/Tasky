@@ -10,7 +10,7 @@ import User from './User';
 
 export default function Navegeshn() {
   const { setOpan } = useContext(TaskContext);
-  const { user } = useContext(AuthContext);
+  const { user , setIsLogin } = useContext(AuthContext);
   const location = useLocation();
 
   const pagenames = {
@@ -62,16 +62,30 @@ export default function Navegeshn() {
           <MenuIcon className="dark:text-text-dark cursor-pointer" sx={{ fontSize: 30 }} />
         </div>
 
-        {/* User Info or Login Button */}
         {user ? (
-            <User style={` hidden xl:flex`}/>
-        ) : (
-          <NavLink to="/login">
-            <button className="bg-primary text-white px-4 py-1 rounded-lg hover:bg-teal-600 transition font-semibold">
-              Login
-            </button>
-          </NavLink>
-        )}
+           <User style={`hidden xl:flex`} />
+           ) : (
+ <div className="flex gap-2">
+  <NavLink to="/login">
+    <button
+      onClick={() => setIsLogin(true)}
+      className="border-primary bg-primary hover:bg-primary/0 border-[2.5px] animate-bounce px-4 py-1 rounded-md  transition font-abhaya">
+      Login
+    </button>
+  </NavLink>
+
+  <NavLink to="/login">
+    <button
+      onClick={() => setIsLogin(false)}
+      className="  border-primary border-[2.5px] px-2 py-1 rounded-md hover:bg-primary transition font-abhaya">
+      Sign Up
+    </button>
+  </NavLink>
+</div>
+
+
+      )}
+
       </div>
     </div>
   );

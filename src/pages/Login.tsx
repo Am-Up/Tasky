@@ -13,29 +13,18 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {TaskContext} from "../contexts/TaskContext"
 import LoadingPage from "./LoadingPage.js";
-interface FormState { 
-    First_Name: string,
-    Last_Name: string,
-    Email: string,
-    Password: string | number,
-    Profile_Image?: File | null,
-    gender?:string 
-}
+import { AuthContext } from "../contexts/AuthContext.js";
+
+
+ 
 
   const Login: React.FC =()=> {
 
 
   const { setLoading } = useContext(TaskContext);
-  const [formData, setFormData] = useState<FormState>({
-    First_Name: "",
-    Last_Name: "",
-    Email: "",
-    Password: "",
-    Profile_Image: null,
-    gender:"malt" || "female" || ""
-  });
+  const { isLogin,setIsLogin, setFormData , formData = {} } = useContext(AuthContext);
+ 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [isLogin, setIsLogin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate()
   // ✅ دالة موحدة لتحديث أي input
@@ -127,7 +116,7 @@ const thame = {
   
   className={`h-auto
     w-full mx-3 xs:h-auto sm:w-[550px] xs:p-4 md:p-6 flex justify-center 
-   bg-white/20 backdrop-blur-lg border  rounded-xl 
+   bg-white/25 backdrop-blur-lg border  rounded-xl 
    shadow-lg shadow-white/20`}>
    
    <form
@@ -190,7 +179,7 @@ const thame = {
       className="w-full h-full object-cover rounded-full border-2 border-gray-300"
     />
     <FlipCameraIosIcon
-      className="bg-slate-700 p-1 text-white rounded-full absolute bottom-2 right-0"
+      className="bg-slate-700 p-1 text-white animate-pulse rounded-full absolute bottom-2 right-0"
       sx={{ fontSize: 27 }}
     />
 
@@ -210,12 +199,12 @@ const thame = {
       className="w-28 h-28 rounded-full flex justify-center items-center"
       sx={{ borderRadius: "9999px" }}
     >
-      <PersonIcon sx={{ fontSize: 80 }} />
+      <PersonIcon sx={{ fontSize: 80 }}/>
     </Button>
 
     <div className="absolute bottom-8 -right-11 group relative">
       <CameraAltIcon
-        className="bg-slate-700 p-1 rounded-full text-white"
+        className="bg-slate-700 p-1 animate-pulse rounded-full text-white"
         sx={{ fontSize: 27 }}
       />
       <span className="absolute bottom-13 right-40 bg-gray-800 text-white text-xs px-2 py-2 w-20 rounded-tl-xl rounded-bl-xl rounded-br-xl opacity-0 group-hover:opacity-100 transition">
@@ -281,26 +270,13 @@ const thame = {
           />
           <span className="text-sm font-abhaya md:text-lg">Female</span>
         </label>
-
-        <label className="flex items-center gap-1 cursor-pointer">
-          <input
-            type="radio"
-            name="gender"
-            value=""
-            checked={formData.gender === ""}
-           onChange={() => setFormData({ ...formData, gender: "" })}
-            aria-checked={formData.gender === ""}
-            className="accent-primary"
-          />
-            <span className="text-sm font-abhaya md:text-lg">Prefer not to say</span>
-         </label>
       </div>
     </fieldset>
         </div>
       )}
 
 
-      <button type="submit" className={` bg-blue-600 w-full text-white py-2 my-2 mt-11 px-10 rounded-xl ${!isLogin ? "mt-2":"my-5"}`}>
+      <button type="submit" className={` bg-blue-600 w-full text-white py-2 my-2 px-10 rounded-xl ${!isLogin ? "mt-11":"mt-12"}`}>
         Submit
       </button>
 
@@ -310,12 +286,12 @@ const thame = {
     {isLogin ? (
       <div className="flex items-center gap-1">
         <span className="text-text-dark text-sm xl:text-lg font-abhaya">Don’t have an account?</span>
-        <a onClick={() => setIsLogin(!isLogin)} className="font-semibold text-lg font-abhaya">Sign in</a>
+        <a onClick={() => setIsLogin(!isLogin)} className="font-semibold text-lg font-abhaya underline">Sign in</a>
       </div>
     ) : (
       <div className="flex items-center gap-1">
         <span className="text-text-dark text-sm xl:text-lg font-abhaya">Already have an account?</span>
-        <a onClick={() => setIsLogin(!isLogin)} className="font-semibold text-lg font-abhaya">Login</a>
+        <a onClick={() => setIsLogin(!isLogin)} className="font-semibold text-lg font-abhaya underline">Login</a>
       </div>
     )}
   </span>

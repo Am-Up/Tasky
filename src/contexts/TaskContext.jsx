@@ -7,7 +7,7 @@ export default function TaskProvider({ children }) {
   const [opan, setOpan] = useState(false);
   const [time, setTime] = useState(0);
   const [isRunning , setIsRunning] = useState(false)
-    const[loading , setLoading] = useState(true)
+  const[loading , setLoading] = useState(true)
 
   useEffect(() => {
     let interval;
