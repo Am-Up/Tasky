@@ -11,12 +11,14 @@ import { TaskContext } from '../contexts/TaskContext';
 import { AuthContext } from '../contexts/AuthContext';
 import {NavLink} from 'react-router-dom'
 import Bott_dark from './Ui/Bott_dark';
-import sound_1 from '../Sounds/sound_1.mp3'
+import sound from "../Sounds/sound.mp3";
+
+
 
 export default function Navpar() {
   const { setOpan, shouldShow, isLargeScreen,wrapperClasses,innerClasses } = useContext(TaskContext);
   const {user , setIsLogin} = useContext(AuthContext)
-  const [play] = useSound(sound_1)
+  const [play] = useSound(sound)
 
   return (
     <>
