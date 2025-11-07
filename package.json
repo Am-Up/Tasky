@@ -3,8 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://Am-Up.github.io/Tasky",
   "scripts": {
-    "homepage": "https://Am-Up.github.io/Tasky",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
