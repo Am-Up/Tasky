@@ -14,15 +14,17 @@ import { useNavigate } from "react-router-dom";
 import {TaskContext} from "../contexts/TaskContext"
 import LoadingPage from "./LoadingPage.js";
 import { AuthContext } from "../contexts/AuthContext.js";
+import useSound from "use-sound"
+import susces from "../assets/transformed.jpeg"
 
 
  
 
   const Login: React.FC =()=> {
 
-
+  const imge = susces;
   const { setLoading } = useContext(TaskContext);
-  const { isLogin,setIsLogin, setFormData , formData = {} } = useContext(AuthContext);
+  const { isLogin,setIsLogin, setFormData , user, setUser, formData = {} } = useContext(AuthContext);
  
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -69,26 +71,36 @@ const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
 };
 
 
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
-     
- 
 
   if (!validateForm()) return;
 
+  // تحديث حالة المستخدم
+  setUser({
+    First_Name: formData.First_Name,
+    Last_Name: formData.Last_Name,
+    Email: formData.Email,
+    Password: formData.Password,
+    Profile_Image: formData.Profile_Image,
+    gender: formData.gender
+  });
+
   toast.success(isLogin ? "Logged in successfully!" : "Account created successfully!");
+
+  // إعادة تعيين الحقول
   setFormData({
     First_Name: "",
     Last_Name: "",
     Email: "",
     Password: "",
     Profile_Image: null,
-  })
- 
-  navigate(-1)
-  console.log(formData)
+    gender: null,
+  });
+
+  navigate(-1);
 };
+
   
 const thame = {
   input: {
@@ -107,8 +119,11 @@ const thame = {
 
 
   return (
-   <div className=" bg-[url('https://img.freepik.com/premium-vector/padlock-with-keyhole-icon-personal-data-security-illustrates-cyber-data-information-privacy-idea-blue-color-abstract-hi-speed-internet-technology_542466-600.jpg')] bg-no-repeat bg-cover bg-center h-screen w-screen flex justify-center items-center pt-4 ">
-    
+<div 
+  style={{ backgroundImage: `url(${imge})` }} 
+  className="bg-no-repeat bg-cover bg-center h-screen w-screen flex justify-center items-center pt-4"
+>
+
  <motion.div
   initial={{ opacity: 0, y: 50, scale: 0.95 }}
   animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -242,36 +257,38 @@ const thame = {
           />
 
 
-    <fieldset className="rounded-md max-w-sm mt-2">
-   
-      <div className="flex gap-3 items-center">
-        <label className="flex items-center gap-1 cursor-pointer">
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            checked={formData.gender === "male"}
-            onChange={() => setFormData({ ...formData, gender: "male" })}
-            aria-checked={formData.gender === "male"}
-            className="accent-primary"
-          />
-          <span className="text-sm font-abhaya md:text-lg">Male</span>
-        </label>
+   <fieldset className="rounded-md max-w-sm">
+ 
+  <div className="flex gap-3 items-center ">
+     <legend className="text-lg font-abhaya">Select Gender</legend>
+    <label className="flex items-center gap-1 cursor-pointer ">
+      <input
+        type="radio"
+        name="gender"
+        value="male"
+        checked={formData.gender === "male"}
+        onChange={() => setFormData({ ...formData, gender: "male" })}
+        aria-checked={formData.gender === "male"}
+        className="accent-primary"
+      />
+      <span className="text-sm font-abhaya md:text-lg">Male</span>
+    </label>
 
-        <label className="flex items-center gap-1 cursor-pointer">
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            checked={formData.gender === "female"}
-           onChange={() => setFormData({ ...formData, gender: "female" })}
-            aria-checked={formData.gender === "female"}
-            className="accent-primary"
-          />
-          <span className="text-sm font-abhaya md:text-lg">Female</span>
-        </label>
-      </div>
-    </fieldset>
+    <label className="flex items-center gap-1 cursor-pointer">
+      <input
+        type="radio"
+        name="gender"
+        value="female"
+        checked={formData.gender === "female"}
+        onChange={() => setFormData({ ...formData, gender: "female" })}
+        aria-checked={formData.gender === "female"}
+        className="accent-primary"
+      />
+      <span className="text-sm font-abhaya md:text-lg">Female</span>
+    </label>
+  </div>
+</fieldset>
+
         </div>
       )}
 

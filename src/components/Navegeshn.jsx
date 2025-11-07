@@ -21,6 +21,15 @@ export default function Navegeshn() {
     "/Dashbord/settings": "Settings",
   };
 
+   
+    const pahtPage =()=>{
+    if(location.pathname === "/LandingPage"){
+      return 'hidden'
+
+    }
+  return ""
+  }
+
   const pagetitle = pagenames[location.pathname] || "Tasky";
   console.log(user);
 
@@ -62,14 +71,15 @@ export default function Navegeshn() {
           <MenuIcon className="dark:text-text-dark cursor-pointer" sx={{ fontSize: 30 }} />
         </div>
 
-        {user ? (
+        <div className='hidden xl:block'> 
+          {user ? (
            <User style={`hidden xl:flex`} />
            ) : (
  <div className="flex gap-2">
   <NavLink to="/login">
     <button
       onClick={() => setIsLogin(true)}
-      className="border-primary bg-primary hover:bg-primary/0 border-[2.5px] animate-bounce px-4 py-1 rounded-md  transition font-abhaya">
+      className=" dark:text-text-dark hover:bg-primary animate-pulse px-4 py-1 rounded-md  transition font-abhaya">
       Login
     </button>
   </NavLink>
@@ -77,7 +87,7 @@ export default function Navegeshn() {
   <NavLink to="/login">
     <button
       onClick={() => setIsLogin(false)}
-      className="  border-primary border-[2.5px] px-2 py-1 rounded-md hover:bg-primary transition font-abhaya">
+      className="  bg-primary  px-2 py-1 rounded-md hover:bg-primary transition font-abhaya">
       Sign Up
     </button>
   </NavLink>
@@ -85,6 +95,7 @@ export default function Navegeshn() {
 
 
       )}
+        </div>
 
       </div>
     </div>

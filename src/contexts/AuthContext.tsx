@@ -39,7 +39,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   });
 
   const [isLogin, setIsLogin] = useState(false);
-  const [user, setUser] = useState<User | null>(); 
+  const [user, setUser] = useState<User | null>(null); 
   const FirstLetar: string = user?.First_Name?.[0] || "";
 
   return (

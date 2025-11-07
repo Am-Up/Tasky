@@ -29,7 +29,7 @@ export default function TaskItem({ task, onToggleDone, onEdit, onDelete, classNa
 
   return (
     <div className={` ms:w-8/12 sm:m-auto mx-1 sm:mx-2 rounded-lg xl:rounded-2xl xl:py-2 mt-2
-     sm:mt-4 relative  flex items-center shadow-todoshad px-2 max-h-16${className} ${task.done ? "bg-secondary-dark" : "bg-text-dark"}`}>
+     sm:mt-4 relative  flex items-center shadow-todoshad px-2 max-h-16${className} ${task.done ? "bg-green-700/40 text-white" : "bg-text-dark"}`}>
       {/* checkbox / done toggle */}
       <button
         type="button"
