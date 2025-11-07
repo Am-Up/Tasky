@@ -97,7 +97,7 @@ export default function Navpar() {
                </button>
              </NavLink>
            
-             <NavLink to="/login">
+             <NavLink to="*">
                <button
                  onClick={() => setIsLogin(false)}
                  className="  bg-primary  px-2 py-1 rounded-md hover:bg-primary transition font-abhaya">
