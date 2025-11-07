@@ -6,19 +6,19 @@ import AssignmentSharpIcon from '@mui/icons-material/AssignmentSharp';
 import User from './User';
 import BuildIcon from '@mui/icons-material/Build';
 import SettingsIcon from '@mui/icons-material/Settings';
-// import useSound from 'use-sound';
+import useSound from 'use-sound';
 import { TaskContext } from '../contexts/TaskContext';
 import { AuthContext } from '../contexts/AuthContext';
 import {NavLink} from 'react-router-dom'
 import Bott_dark from './Ui/Bott_dark';
-// import sound from "../Sounds/sound.mp3";
+import sound from "../Sounds/sound.mp3";
 
 
 
 export default function Navpar() {
   const { setOpan, shouldShow, isLargeScreen,wrapperClasses,innerClasses } = useContext(TaskContext);
   const {user , setIsLogin} = useContext(AuthContext)
-  // const [play] = useSound(sound)
+  const [play] = useSound(sound)
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function Navpar() {
             )}
 
             <ul className=" mt-24 w-full flex flex-col items-center gap-1 text-abhaya">
-              <li  className="w-full h-full flex justify-center">
+              <li onClick={play} className="w-full h-full flex justify-center">
                 <NavLink to="/Dashbord/" end  className={({ isActive }) => `text-lg w-9/12 p-3 dark:text-text-dark transition-colors rounded-2xl font-abhaya flex items-center ${
                             isActive ? 'bg-black text-white dark:text-text' : 'hover:bg-black hover:text-white'}`}>
                   <DashboardIcon sx={{ fontSize: 27 }} className="mr-1 pb-1" />
@@ -46,7 +46,7 @@ export default function Navpar() {
                 </NavLink>
               </li>
 
-              <li  className="w-full h-full flex justify-center">
+              <li onClick={play} className="w-full h-full flex justify-center">
                 <NavLink to="/Dashbord/Reports"
                   className={({ isActive }) =>`text-lg w-9/12 p-3 dark:text-text-dark rounded-2xl font-abhaya flex items-center ${
                           isActive ? 'bg-black text-white dark:text-text' : 'hover:bg-black hover:text-white'}`}>
@@ -55,7 +55,7 @@ export default function Navpar() {
                 </NavLink>
               </li>
 
-              <li  className="w-full h-full flex justify-center">
+              <li onClick={play} className="w-full h-full flex justify-center">
                 <NavLink to="/Dashbord/ToDo" 
                 className={({ isActive }) =>`text-lg w-9/12 p-3 dark:text-text-dark rounded-2xl font-abhaya flex items-center ${
                               isActive ? 'bg-black text-white dark:text-text' : 'hover:bg-black hover:text-white' }` }>
@@ -64,7 +64,7 @@ export default function Navpar() {
                 </NavLink>
               </li>
 
-              <li  className="w-full h-full flex justify-center">
+              <li onClick={play} className="w-full h-full flex justify-center">
                 <NavLink to="/Dashbord/Tools" 
                  className={({ isActive }) => `text-lg w-9/12 p-3 dark:text-text-dark rounded-2xl font-abhaya flex items-center ${
                              isActive ? 'bg-black text-white dark:text-text' : 'hover:bg-black hover:text-white'}`}>
@@ -73,7 +73,7 @@ export default function Navpar() {
                 </NavLink>
               </li>
 
-              <li  className="w-full h-full flex justify-center">
+              <li onClick={play} className="w-full h-full flex justify-center">
                 <NavLink to="/Login" 
                  className={({ isActive }) =>`text-lg w-9/12 p-3 dark:text-text-dark rounded-2xl font-abhaya flex items-center ${
                               isActive ? 'bg-black text-white dark:text-text' : 'hover:bg-black hover:text-white'}`}>
