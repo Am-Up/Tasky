@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
-
+import {useSound} from "use-sound";
+import sound from "../Sounds/sound.mp3";
 //===================================
 export const TaskContext = createContext();
 // ============ start Time ===============
@@ -8,6 +9,9 @@ export default function TaskProvider({ children }) {
   const [time, setTime] = useState(0);
   const [isRunning , setIsRunning] = useState(false)
   const[loading , setLoading] = useState(true)
+
+   const [play] = useSound(sound)
+
 
   useEffect(() => {
     let interval;
@@ -107,8 +111,8 @@ export default function TaskProvider({ children }) {
       wrapperClasses,
       innerClasses,
       loading,
-      setLoading
-     
+      setLoading,
+      play, // اصوات ز مواثرات      
     }}>
       {children}
     </TaskContext.Provider>

@@ -1,23 +1,24 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
-import boy from "../assets/boy.png";
-import gearl from "../assets/gearl.png";
+import { TaskContext } from '../contexts/TaskContext';
+
+import { NavLink } from 'react-router-dom';
+
 
 export default function User({ style }) {
-  const auth = useContext(AuthContext);
+  const {auth , Avatar} = useContext(AuthContext);
+  const play = useContext(TaskContext);
 
   if (!auth) return null; // في حال context مش متاح
   const { user, FirstLetar } = auth;
 
-  const Avatar = (user) => {
-    if (user?.gender === "male") return boy;
-    if (user?.gender === "female") return gearl;
-    return null;
-  };
+  
 
   return (
-    <div className={`${style} flex items-center gap-4 `}>
-      <div>
+   <>
+    <NavLink onClick={play} to="/Dashbord/Profiele" className={`${style} flex items-center gap-4 `}>
+      
+        <div>
         <h5 className="font-abhaya text-lg dark:text-text-dark">{user?.First_Name || "user"}</h5>
       </div>
 
@@ -40,6 +41,8 @@ export default function User({ style }) {
           <p className="text-2xl  font-mono font-black">{FirstLetar}</p>
         )}
       </div>
-    </div>
+     
+    </NavLink>
+   </>
   );
 }

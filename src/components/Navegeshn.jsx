@@ -22,13 +22,7 @@ export default function Navegeshn() {
   };
 
    
-    const pahtPage =()=>{
-    if(location.pathname === "/LandingPage"){
-      return 'hidden'
-
-    }
-  return ""
-  }
+ 
 
   const pagetitle = pagenames[location.pathname] || "Tasky";
   console.log(user);

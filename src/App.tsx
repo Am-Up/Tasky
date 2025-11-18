@@ -1,10 +1,13 @@
 import './index.css';
-import Navegeshn from './components/Navegeshn.jsx';
+import { useEffect, useContext } from 'react';
+import AuthProvider, { AuthContext } from './contexts/AuthContext.js';
 import { Toaster } from 'sonner';
 import { Routes, Route } from 'react-router-dom';
 import TaskProvider, { TaskContext } from './contexts/TaskContext.jsx';
 import TodoProvider from './contexts/TodoContext.jsx';
 import ToolsProvider from './contexts/ToolsContext.jsx';
+
+// pagegs
 import HomeDashbord from './pages/HomeDashbord.jsx';
 import Navpar from './components/Navpar.jsx';
 import HomeReports from './pages/HomeReports.jsx';
@@ -13,9 +16,9 @@ import HomeTools from './pages/HomeTools.jsx';
 import Login from './pages/Login.js';
 import LandingPage from './pages/LandingPage.jsx';
 import LoadingPage from './pages/LoadingPage.js';
-import { useEffect, useContext } from 'react';
-import AuthProvider, { AuthContext } from './contexts/AuthContext.js';
-
+import Navegeshn from './components/Navegeshn.jsx';
+import Profiele from './pages/Profiele.js';
+import Settings from './pages/Settings.js';
 function App() {
   return (
     <TodoProvider>
@@ -32,10 +35,10 @@ function App() {
 
 function MainApp() {
   const { loading, setLoading } = useContext(TaskContext);
-  const { user } = useContext(AuthContext);
+
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
+    const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, [setLoading]);
 
@@ -62,6 +65,8 @@ function MainApp() {
                     <Route path="Reports" element={<HomeReports />} />
                     <Route path="ToDo" element={<HomeToDo />} />
                     <Route path="Tools" element={<HomeTools />} />
+                    <Route path="Settings" element={<Settings />} />
+                    <Route path="Profiele" element={<Profiele />} />
                   </Routes>
                 </main>
                 <nav className="order-2 xl:order-1 w-full">
